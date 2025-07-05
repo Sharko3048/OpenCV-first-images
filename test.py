@@ -1,5 +1,5 @@
 import cv2 as c
-black=c.imread("opencv/black.jpg",c.IMREAD_COLOR)
+black=c.imread("opencv/black.png",c.IMREAD_COLOR)
 white=c.imread("opencv/white.png",c.IMREAD_COLOR)
 c.imshow("secondprojw",black)
 c.imshow("secondprojw2",white)
