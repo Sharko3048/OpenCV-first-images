@@ -51,3 +51,23 @@ eroded_s=cv2.erode(sukuna,np.ones((8,8)))
 cv2.imshow("sukuna",eroded_s)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+#Blurring the image
+blur=cv2.GaussianBlur(sukuna,(71,71),0)
+cv2.imshow("blur",blur)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+#median blur
+bugatti=cv2.imread("opencv/images_cuz_yas/bugatti.jpg",cv2.IMREAD_COLOR)
+m_blur=cv2.medianBlur(bugatti,41)
+cv2.imshow("blur_bg",m_blur)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+#bilateral filter
+lambo=cv2.imread("opencv/images_cuz_yas/lambo.jpg",cv2.IMREAD_COLOR)
+filter=cv2.bilateralFilter(lambo,75,275,275)
+cv2.imshow("blur_bg",filter)
+cv2.waitKey(0)
+cv2.destroyAllWindows
