@@ -15,13 +15,15 @@ for file in os.listdir(path):
         images.append(file)
         readimg=cv2.imread(os.path.join(path,file),cv2.IMREAD_COLOR)
         variable=readimg.shape
-        total_w=total_w + variable[0]
-        total_h=total_h + variable[1]
+        # total_w=total_w + variable[0]
+        # total_h=total_h + variable[1]
 
-av_w=total_w//len(images)
-av_h=total_h//len(images)
+# av_w=total_w//len(images)
+# av_h=total_h//len(images)
+av_w=WIDTH
+av_h=HEIGHT
 
-print(av_w,av_h)
+# print(av_w,av_h)
 
 collage="mafirstcollage.mov"
 fourcc = cv2.VideoWriter_fourcc(*'avc1')
@@ -33,5 +35,5 @@ for file in images:
     print(path+file)
     readimg=cv2.imread(os.path.join(path,file),cv2.IMREAD_COLOR)
     resized=cv2.resize(readimg,(av_w,av_h))
-    vidio.write(readimg)
+    vidio.write(resized)
     
