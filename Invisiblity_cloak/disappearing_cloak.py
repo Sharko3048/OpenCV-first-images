@@ -23,14 +23,20 @@ while vid.isOpened():
     #identifying red area
     mask1=cv2.inRange(frame1,lowerbound,upperbound)
     #refining image
-    mask1=cv2.morphologyEx(mask1,cv2.MORPH_OPEN,numpy.ones((3,3)),iterations=2)
+    mask1=cv2.morphologyEx(mask1,cv2.MORPH_OPEN,numpy.ones((3,3),numpy.uint8),iterations=2)
     #identifying other area
     mask2=cv2.bitwise_not(mask1)
     result1=cv2.bitwise_and(bg,bg,mask1)
     result2=cv2.bitwise_and(frame,frame,mask2)
     output=cv2.add(result1,result2)
+    row,column=output.shape[0:2]
+    rotated=cv2.getRotationMatrix2D((column/2,row/2),90,1)
+    output=cv2.warpAffine(output,rotated,(row,column))
     cv2.imshow("ma vid",output)
-    cv2.waitKey(49)
+    cv2.waitKey(10)
+    
+    
+
     
 
 
