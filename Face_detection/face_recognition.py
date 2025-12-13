@@ -40,12 +40,15 @@ while True:
         continue
     frame=cv2.cvtColor(ogframe,cv2.COLOR_BGR2GRAY)
     faces=classifier.detectMultiScale(frame,1.2,4)
-    print(faces)
+    #print(faces)
 
     for x,y,w,h in faces:
-        cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),5)
+        cv2.rectangle(ogframe,(x,y),(x+w,y+h),(255,0,0),5)
         faceye=frame[y:y+h,x:x+w]
         faceye=cv2.resize(faceye,(width,height))
+        prediction=model.predict(faceye)
+        print(prediction)
+        cv2.putText(ogframe,namesxlabels[prediction[0]],(x+w//4,y-10),cv2.FONT_HERSHEY_PLAIN,2,(0,0,255),4)
 
     cv2.imshow("Face",ogframe)
     key=cv2.waitKey(9)
